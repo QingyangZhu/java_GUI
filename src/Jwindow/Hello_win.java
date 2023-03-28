@@ -47,7 +47,7 @@ public class Hello_win extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == button_login) {
             // 跳转到登录页面
-            new Login_win().setVisible(true);
+            new LoginFrame().setVisible(true);
             // 关闭当前窗口
             dispose();
         } else if (event.getSource() == button_register) {

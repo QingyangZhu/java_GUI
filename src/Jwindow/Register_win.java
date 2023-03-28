@@ -1,9 +1,15 @@
 package Jwindow;
 
+import MySQLdiver.MySQLConnection;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 class Register_win extends JFrame {
     // 用户名、密码、确认密码的文本框
@@ -52,25 +58,41 @@ class Register_win extends JFrame {
         c.gridx = 1;
         c.gridy = 3;
         JButton register_button = new JButton("注册");
+
         register_button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // 获取用户名、密码、确认密码
                 String username = username_textField.getText();
                 String password = new String(password_textField.getPassword());
                 String confirm = new String(confirm_textField.getPassword());
-                // 判断用户名、密码、确认密码是否为空
-                if (username.equals("") || password.equals("") || confirm.equals("")) {
-                    JOptionPane.showMessageDialog(null, "用户名、密码、确认密码不能为空！", "注册失败", JOptionPane.WARNING_MESSAGE);
-                } else if (!password.equals(confirm)) { // 判断密码和确认密码是否相同
-                    JOptionPane.showMessageDialog(null, "密码和确认密码不相同！", "注册失败", JOptionPane.WARNING_MESSAGE);
-                } else {
-                    // 弹窗提示注册成功
-                    JOptionPane.showMessageDialog(null, "注册成功！", "注册成功", JOptionPane.INFORMATION_MESSAGE);
-                    // 跳转到登录页面
-                    new Login_win().setVisible(true);
-                    // 关闭当前窗口
-                    dispose();
-                }
+                try {
+                    Connection con = MySQLConnection.getConnection();
+                    //Statement stmt = con.createStatement();
+                    ResultSet rs;
+                    // 判断用户名、密码、确认密码是否为空
+                    if (username.equals("") || password.equals("") || confirm.equals("")) {
+                        JOptionPane.showMessageDialog(null, "用户名、密码、确认密码不能为空！", "注册失败", JOptionPane.WARNING_MESSAGE);
+                    } else if (!password.equals(confirm)) { // 判断密码和确认密码是否相同
+                        JOptionPane.showMessageDialog(null, "密码和确认密码不相同！", "注册失败", JOptionPane.WARNING_MESSAGE);
+                    } else {
+                        PreparedStatement stmt = con.prepareStatement("INSERT INTO students"+"(sid, spassword) VALUES (?, ?)");
+                        //stmt.executeUpdate("INSERT INTO students(sid,spassword) values () ");
+                        stmt.setString(1, username);
+                        stmt.setString(2, password);
+                        stmt.executeUpdate();
+                        // 弹窗提示注册成功
+                        JOptionPane.showMessageDialog(null, "注册成功！", "注册成功", JOptionPane.INFORMATION_MESSAGE);
+                        // 跳转到登录页面
+                        new LoginFrame().setVisible(true);
+                        // 关闭当前窗口
+                        dispose();
+                    }
+
+                }catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+
+
             }
         });
         add(register_button, c);
