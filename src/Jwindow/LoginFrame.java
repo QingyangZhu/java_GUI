@@ -3,9 +3,11 @@ package Jwindow;
 import MySQLdiver.MySQLConnection;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class LoginFrame extends JFrame implements ActionListener {
     private JPanel panel;
@@ -92,7 +94,7 @@ public class LoginFrame extends JFrame implements ActionListener {
                     if (rs.next()) {
                         success = true;
                         //con.close();
-                        new MyPage().setVisible(true);
+                        new teacher_page().setVisible(true);
                         // 关闭当前窗口
                         dispose();
                     }

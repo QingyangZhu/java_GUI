@@ -10,7 +10,7 @@ public class MySQLConnection {
     static String url = "jdbc:mysql://localhost:3306/java_projects?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
     public static Connection getConnection() {
-        if (conn == null) {
+        if (true) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
