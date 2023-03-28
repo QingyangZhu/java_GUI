@@ -160,6 +160,8 @@ public class teacher_page extends JFrame {
 
         gradeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String username = LoginFrame.userTextField.getText();
+                new CourseTable(username).setVisible(true);
                 /*infoLabel.setVisible(false);
                 examLabel.setVisible(false);
                 courseLabel.setVisible(false);
