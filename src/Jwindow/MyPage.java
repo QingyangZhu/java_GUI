@@ -108,13 +108,13 @@ public class MyPage extends JFrame implements ActionListener {
         }
         if (event.getSource() == btnGradeManagement) {
             // 跳转到注册页面
-            new Register_win().setVisible(true);
+            new StudentGradeGUI(LoginFrame.userTextField.getText()).setVisible(true);
             // 关闭当前窗口
             //dispose();
         }
         if (event.getSource() == btnGradeQuery) {
             // 跳转到注册页面
-            new Register_win().setVisible(true);
+            new ExamInfoGUI(LoginFrame.userTextField.getText()).setVisible(true);
             // 关闭当前窗口
             //dispose();
         }

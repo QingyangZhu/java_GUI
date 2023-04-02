@@ -1010,179 +1010,188 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="301" parent="290" name="tid">
+    <column id="301" parent="290" name="cgrade">
+      <Position>5</Position>
+      <DataType>int(5)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="302" parent="290" name="tid">
       <ColNames>tid</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="302" parent="290" name="PRIMARY">
+    <key id="303" parent="290" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>cid</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="303" parent="290" name="tid">
+    <foreign-key id="304" parent="290" name="tid">
       <ColNames>tid</ColNames>
       <RefTableName>teacher</RefTableName>
       <RefColNames>tid</RefColNames>
     </foreign-key>
-    <column id="304" parent="291" name="eid">
+    <column id="305" parent="291" name="eid">
       <Position>1</Position>
       <DataType>int(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="305" parent="291" name="etime_begin">
+    <column id="306" parent="291" name="etime_begin">
       <Position>2</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="306" parent="291" name="etime_end">
+    <column id="307" parent="291" name="etime_end">
       <Position>3</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="307" parent="291" name="ename">
+    <column id="308" parent="291" name="ename">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="308" parent="291" name="tid">
+    <column id="309" parent="291" name="tid">
       <Position>5</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="309" parent="291" name="PRIMARY">
+    <column id="310" parent="291" name="cid">
+      <Position>6</Position>
+      <DataType>int(30)|0s</DataType>
+    </column>
+    <key id="311" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>eid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="310" parent="292" name="sid">
+    <column id="312" parent="292" name="sid">
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="311" parent="292" name="cid">
+    <column id="313" parent="292" name="cid">
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="312" parent="292" name="gid">
+    <column id="314" parent="292" name="gid">
       <Position>3</Position>
       <DataType>int(100)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="313" parent="292" name="tid">
+    <column id="315" parent="292" name="tid">
       <Position>4</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="314" parent="292" name="grade">
+    <column id="316" parent="292" name="grade">
       <Position>5</Position>
       <DataType>int(5)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="315" parent="292" name="PRIMARY">
+    <key id="317" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>gid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="316" parent="293" name="sid">
+    <column id="318" parent="293" name="sid">
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="317" parent="293" name="sname">
+    <column id="319" parent="293" name="sname">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="318" parent="293" name="spassword">
+    <column id="320" parent="293" name="spassword">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="319" parent="293" name="smajor">
+    <column id="321" parent="293" name="smajor">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="320" parent="293" name="sxueyuan">
+    <column id="322" parent="293" name="sxueyuan">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="321" parent="293" name="sclass">
+    <column id="323" parent="293" name="sclass">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="322" parent="293" name="PRIMARY">
+    <key id="324" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>sid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="323" parent="294" name="tname">
+    <column id="325" parent="294" name="tname">
       <Position>1</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="324" parent="294" name="tid">
+    <column id="326" parent="294" name="tid">
       <Position>2</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="325" parent="294" name="tpassword">
+    <column id="327" parent="294" name="tpassword">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="326" parent="294" name="tmajor">
+    <column id="328" parent="294" name="tmajor">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="327" parent="294" name="txueyuan">
+    <column id="329" parent="294" name="txueyuan">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <key id="328" parent="294" name="PRIMARY">
+    <key id="330" parent="294" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>tid</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="329" parent="295" name="id">
+    <column id="331" parent="295" name="id">
       <Position>1</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="330" parent="295" name="name">
+    <column id="332" parent="295" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <column id="331" parent="295" name="age">
+    <column id="333" parent="295" name="age">
       <Position>3</Position>
       <DataType>int(10)|0s</DataType>
     </column>
-    <column id="332" parent="296" name="cid">
+    <column id="334" parent="296" name="cid">
       <Position>1</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="333" parent="296" name="sid">
+    <column id="335" parent="296" name="sid">
       <Position>2</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="334" parent="296" name="tid">
+    <column id="336" parent="296" name="tid">
       <Position>3</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="335" parent="296" name="xid">
+    <column id="337" parent="296" name="xid">
       <Position>4</Position>
       <DataType>int(30)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="336" parent="296" name="grade">
+    <column id="338" parent="296" name="grade">
       <Position>5</Position>
       <DataType>int(10)|0s</DataType>
     </column>
-    <key id="337" parent="296" name="PRIMARY">
+    <key id="339" parent="296" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xid</ColNames>
       <Primary>1</Primary>
