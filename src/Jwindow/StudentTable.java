@@ -120,4 +120,8 @@ public class StudentTable extends JFrame {
             return button;
         }
     }
+
+    public static void main(String[] args) {
+        new StudentTable("1");
+    }
 }

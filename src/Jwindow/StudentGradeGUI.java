@@ -5,13 +5,11 @@ import MySQLdiver.MySQLConnection;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.sql.*;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class StudentGradeGUI extends JFrame {
     private String studentID;
@@ -24,7 +22,7 @@ public class StudentGradeGUI extends JFrame {
         super("成绩信息");
         this.studentID = studentID;
         this.setSize(800, 600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 创建表格和表格模型
         String[] columnNames = {"成绩编号", "课程名称", "任课教师", "课程成绩", "课程学分"};
@@ -50,13 +48,13 @@ public class StudentGradeGUI extends JFrame {
 
             Connection connection = MySQLConnection.getConnection();
             Statement statement = connection.createStatement();
-            String sql = "SELECT gid, cname, tname, grade, cgrade FROM sgrade, course, teacher WHERE sgrade.cid = course.cid AND sgrade.tid = teacher.tid AND sid = " + studentID;
+            String sql = "SELECT xid, cname, tname, grade, cgrade FROM xuanke, course, teacher WHERE xuanke.cid = course.cid AND xuanke.tid = teacher.tid AND sid = " + studentID;
             ResultSet resultSet = statement.executeQuery(sql);
 
             double weightedSum = 0;
             double creditSum = 0;
             while (resultSet.next()) {
-                String gid = resultSet.getString("gid");
+                String xid = resultSet.getString("xid");
                 String cname = resultSet.getString("cname");
                 String tname = resultSet.getString("tname");
                 String grade = resultSet.getString("grade");
@@ -67,7 +65,7 @@ public class StudentGradeGUI extends JFrame {
                 weightedSum += credit * score;
                 creditSum += credit;
 
-                model.addRow(new String[]{gid, cname, tname, grade, cgrade});
+                model.addRow(new String[]{xid, cname, tname, grade, cgrade});
             }
 
             resultSet.close();

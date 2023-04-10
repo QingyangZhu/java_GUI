@@ -24,7 +24,7 @@ public class Course extends JFrame implements ActionListener {
     private ResultSet rs;
 
     public Course() {
-        super("Course Information");
+        super("课程信息");
 
         // 设置窗口属性
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -32,10 +32,11 @@ public class Course extends JFrame implements ActionListener {
 
         // 创建组件
         panel = new JPanel(new BorderLayout());
-        label = new JLabel("Teacher ID:");
-        String username = LoginFrame.userTextField.getText();
+        label = new JLabel("当前教师工号：");
+        //String username = LoginFrame.userTextField.getText();
+        String username = "123";
         tidField = new JTextField(username,10);
-        searchButton = new JButton("Search");
+        searchButton = new JButton("搜索");
         searchButton.addActionListener(this);
 
         // 添加组件到面板
@@ -49,9 +50,9 @@ public class Course extends JFrame implements ActionListener {
         scrollPane = new JScrollPane(table);
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        editButton = new JButton("Edit");
+        editButton = new JButton("编辑");
         editButton.addActionListener(this);
-        addButton = new JButton("Add");
+        addButton = new JButton("新增");
         addButton.addActionListener(this);
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(editButton);
@@ -82,17 +83,19 @@ public class Course extends JFrame implements ActionListener {
 
                 // 构造表格模型
                 DefaultTableModel model = new DefaultTableModel();
-                model.addColumn("Course ID");
-                model.addColumn("Course Name");
-                model.addColumn("Department");
+                model.addColumn("课程编号");
+                model.addColumn("课程名称");
+                model.addColumn("开课学院");
+                model.addColumn("课程学分");
 
                 // 遍历结果集并添加到表格模型中
                 while (rs.next()) {
                     String cid = rs.getString("cid");
                     String cname = rs.getString("cname");
                     String cxueyuan = rs.getString("cxueyuan");
+                    String cgrade = rs.getString("cgrade");
 
-                    model.addRow(new Object[]{cid, cname, cxueyuan});
+                    model.addRow(new Object[]{cid, cname, cxueyuan,cgrade});
                 }
 
                 // 显示表格
@@ -105,33 +108,36 @@ public class Course extends JFrame implements ActionListener {
             // 编辑课程信息
             int row = table.getSelectedRow();
             if (row == -1) {
-                JOptionPane.showMessageDialog(this, "Please select a row.");
+                JOptionPane.showMessageDialog(this, "请选择需要编辑的课程列");
                 return;
             }
 
             String cid = (String) table.getValueAt(row, 0);
             String cname = (String) table.getValueAt(row, 1);
             String cxueyuan = (String) table.getValueAt(row, 2);
+            String cgrade = (String) table.getValueAt(row, 3);
             // 弹出对话框让用户输入修改后的信息
             JTextField cidField = new JTextField(cid);
             JTextField cnameField = new JTextField(cname);
             JTextField cxueyuanField = new JTextField(cxueyuan);
+            JTextField cgradeField = new JTextField(cgrade);
 
-            Object[] fields = {"Course ID:", cidField, "Course Name:", cnameField, "Department:", cxueyuanField};
-            int result = JOptionPane.showConfirmDialog(this, fields, "Edit Course", JOptionPane.OK_CANCEL_OPTION);
+            Object[] fields = {"课程编号：", cidField, "课程名称：", cnameField, "开课学院：", cxueyuanField,"课程学分：",cgradeField};
+            int result = JOptionPane.showConfirmDialog(this, fields, "修改课程信息", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 String newCid = cidField.getText();
                 String newCname = cnameField.getText();
                 String newCxueyuan = cxueyuanField.getText();
+                String newCgrade = cgradeField.getText();
 
                 // 更新数据库
-                String update = "UPDATE course SET cid='" + newCid + "', cname='" + newCname + "', cxueyuan='" + newCxueyuan + "' WHERE cid='" + cid + "'";
+                String update = "UPDATE course SET cid='" + newCid + "', cname='" + newCname + "', cxueyuan='" + newCxueyuan + "',cgrade='" + newCgrade + "' WHERE cid='" + cid + "'";
                 try {
                     stmt.executeUpdate(update);
-                    JOptionPane.showMessageDialog(this, "Course updated successfully.");
+                    JOptionPane.showMessageDialog(this, "课程信息更新成功！");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(this, "Failed to update course.");
+                    JOptionPane.showMessageDialog(this, "课程修改失败！");
                 }
             }
         } else if (e.getSource() == addButton) {
@@ -139,22 +145,24 @@ public class Course extends JFrame implements ActionListener {
             JTextField cidField = new JTextField();
             JTextField cnameField = new JTextField();
             JTextField cxueyuanField = new JTextField();
+            JTextField cgradeField = new JTextField();
 
-            Object[] fields = {"Course ID:", cidField, "Course Name:", cnameField, "Department:", cxueyuanField};
-            int result = JOptionPane.showConfirmDialog(this, fields, "Add Course", JOptionPane.OK_CANCEL_OPTION);
+            Object[] fields = {"课程编号：", cidField, "课程名称：", cnameField, "开课学院：", cxueyuanField,"课程学分：",cgradeField};
+            int result = JOptionPane.showConfirmDialog(this, fields, "新增课程", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 String cid = cidField.getText();
                 String cname = cnameField.getText();
                 String cxueyuan = cxueyuanField.getText();
+                String cgrade = cgradeField.getText();
 
                 // 插入数据库
-                String insert = "INSERT INTO course (cid, cname, cxueyuan, tid) VALUES ('" + cid + "', '" + cname + "', '" + cxueyuan + "', '" + tidField.getText() + "')";
+                String insert = "INSERT INTO course (cid, cname, cxueyuan, tid,cgrade) VALUES ('" + cid + "', '" + cname + "', '" + cxueyuan + "', '" + tidField.getText() + "','" + cgrade + "')";
                 try {
                     stmt.executeUpdate(insert);
-                    JOptionPane.showMessageDialog(this, "Course added successfully.");
+                    JOptionPane.showMessageDialog(this, "课程新增成功！");
                 } catch (SQLException ex) {
                     ex.printStackTrace();
-                    JOptionPane.showMessageDialog(this, "Failed to add course.");
+                    JOptionPane.showMessageDialog(this, "课程添加失败！");
                 }
             }
         }

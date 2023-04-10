@@ -18,7 +18,7 @@ public class CourseTable extends JFrame {
     public CourseTable(String tid) {
         this.tid = tid;
         setTitle("教师 " + tid + " 所上的课程");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null); // 居中显示
 
