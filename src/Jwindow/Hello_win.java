@@ -52,7 +52,7 @@ public class Hello_win extends JFrame implements ActionListener {
             dispose();
         } else if (event.getSource() == button_register) {
             // 跳转到注册页面
-            new Register_win().setVisible(true);
+            new RegistrationForm().setVisible(true);
             // 关闭当前窗口
             dispose();
         }

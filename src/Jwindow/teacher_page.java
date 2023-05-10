@@ -43,7 +43,7 @@ public class teacher_page extends JFrame {
         headerPanel.setBackground(new Color(90, 150, 250));
 
         // Create the welcome label
-        welcomeLabel = new JLabel("欢迎您，教师！");
+        welcomeLabel = new JLabel("老师您好！");
         welcomeLabel.setForeground(Color.WHITE);
         welcomeLabel.setFont(new Font("微软雅黑", Font.BOLD, 28));
 
@@ -89,30 +89,6 @@ public class teacher_page extends JFrame {
         buttonPanel.add(courseButton);
         buttonPanel.add(gradeButton);
 
-        /*// Create the information label
-        infoLabel = new JLabel("<html><h1>我的信息</h1><p>您的个人信息将在此处显示。</p></html>");
-        infoLabel.setVerticalAlignment(SwingConstants.TOP);
-        infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        infoLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
-
-        // Create the exam label
-        examLabel = new JLabel("<html><h1>考试安排</h1><p>考试安排将在此处显示。</p></html>");
-        examLabel.setVerticalAlignment(SwingConstants.TOP);
-        examLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        examLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
-
-        // Create the course label
-        courseLabel = new JLabel("<html><h1>课程管理</h1><p>您的课程将在此处显示。</p></html>");
-        courseLabel.setVerticalAlignment(SwingConstants.TOP);
-        courseLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        courseLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
-
-        // Create the grade label
-        gradeLabel = new JLabel("<html><h1>成绩填报</h1><p>成绩填报将在此处显示。</p></html>");
-        gradeLabel.setVerticalAlignment(SwingConstants.TOP);
-        gradeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        gradeLabel.setBorder(new EmptyBorder(20, 20, 20, 20));*/
-
         // Add the components to the main panel
         mainPanel.add(headerPanel, BorderLayout.NORTH);
         mainPanel.add(buttonPanel, BorderLayout.CENTER);
@@ -131,30 +107,18 @@ public class teacher_page extends JFrame {
         infoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new TeacherInfoGUI().setVisible(true);
-                /*infoLabel.setVisible(true);
-                examLabel.setVisible(false);
-                courseLabel.setVisible(false);
-                gradeLabel.setVisible(false);*/
             }
         });
 
         examButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new ExamScheduleGUI().setVisible(true);
-                /*infoLabel.setVisible(false);
-                examLabel.setVisible(true);
-                courseLabel.setVisible(false);
-                gradeLabel.setVisible(false);*/
             }
         });
 
         courseButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new Course().setVisible(true);
-                /*infoLabel.setVisible(false);
-                examLabel.setVisible(false);
-                courseLabel.setVisible(true);
-                gradeLabel.setVisible(false);*/
             }
         });
 
@@ -162,16 +126,7 @@ public class teacher_page extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = LoginFrame.userTextField.getText();
                 new CourseTable(username).setVisible(true);
-                /*infoLabel.setVisible(false);
-                examLabel.setVisible(false);
-                courseLabel.setVisible(false);
-                gradeLabel.setVisible(true);*/
             }
         });
-    }
-
-    // Main method
-    public static void main(String[] args) {
-        new teacher_page();
     }
 }

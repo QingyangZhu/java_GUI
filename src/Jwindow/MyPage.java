@@ -31,8 +31,8 @@ public class MyPage extends JFrame implements ActionListener {
 
     public MyPage() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 500, 480);
-        setTitle("My Page");
+        setBounds(100, 100, 600, 480);
+        setTitle("学生主页");
 
         contentPane = new JPanel();
         contentPane.setBackground(new Color(255, 250, 240));
@@ -47,45 +47,45 @@ public class MyPage extends JFrame implements ActionListener {
 
         // 添加个人信息按钮
         btnHomepage = new JButton("个人信息");
-        btnHomepage.setFont(new Font("宋体", Font.BOLD, 16));
+        btnHomepage.setFont(new Font("宋体", Font.BOLD, 22));
         btnHomepage.setBackground(new Color(255, 215, 0));
         GridBagConstraints gbc_btnHomepage = new GridBagConstraints();
         gbc_btnHomepage.insets = new Insets(0, 0, 5, 5);
         gbc_btnHomepage.gridx = 2;
-        gbc_btnHomepage.gridy = 2;
+        gbc_btnHomepage.gridy = 9;
         contentPane.add(btnHomepage, gbc_btnHomepage);
         btnHomepage.addActionListener(this);
 
         // 添加成绩管理按钮
         btnGradeManagement = new JButton("成绩管理");
-        btnGradeManagement.setFont(new Font("宋体", Font.BOLD, 16));
+        btnGradeManagement.setFont(new Font("宋体", Font.BOLD, 22));
         btnGradeManagement.setBackground(new Color(255, 140, 0));
         GridBagConstraints gbc_btnGradeManagement = new GridBagConstraints();
         gbc_btnGradeManagement.insets = new Insets(0, 0, 5, 5);
-        gbc_btnGradeManagement.gridx = 3;
-        gbc_btnGradeManagement.gridy = 2;
+        gbc_btnGradeManagement.gridx = 4;
+        gbc_btnGradeManagement.gridy = 9;
         contentPane.add(btnGradeManagement, gbc_btnGradeManagement);
         btnGradeManagement.addActionListener(this);
 
         //考试信息
         btnGradeQuery = new JButton("考试信息");
-        btnGradeQuery.setFont(new Font("宋体", Font.BOLD, 16));
+        btnGradeQuery.setFont(new Font("宋体", Font.BOLD, 22));
         btnGradeQuery.setBackground(new Color(255, 69, 0));
         GridBagConstraints gbc_btnGradeQuery = new GridBagConstraints();
         gbc_btnGradeQuery.insets = new Insets(0, 0, 5, 5);
-        gbc_btnGradeQuery.gridx = 4;
-        gbc_btnGradeQuery.gridy = 2;
+        gbc_btnGradeQuery.gridx = 3;
+        gbc_btnGradeQuery.gridy = 9;
         contentPane.add(btnGradeQuery, gbc_btnGradeQuery);
         btnGradeQuery.addActionListener(this);
 
         // 添加标题
-        JLabel lblTitle = new JLabel("欢迎来到我的个人主页");
+        JLabel lblTitle = new JLabel("欢迎来到您的个人主页");
         lblTitle.setForeground(new Color(0, 0, 205));
-        lblTitle.setFont(new Font("微软雅黑", Font.BOLD, 28));
+        lblTitle.setFont(new Font("微软雅黑", Font.BOLD, 30));
         GridBagConstraints gbc_lblTitle = new GridBagConstraints();
         gbc_lblTitle.gridwidth = 3;
         gbc_lblTitle.insets = new Insets(0, 0, 5, 5);
-        gbc_lblTitle.gridx = 1;
+        gbc_lblTitle.gridx = 2;
         gbc_lblTitle.gridy = 1;
         contentPane.add(lblTitle, gbc_lblTitle);
 

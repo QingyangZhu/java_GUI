@@ -88,13 +88,9 @@ public class CourseTable extends JFrame {
                 }
             });
         }
-
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             cid = (String) table.getValueAt(row, 0);
-            //System.out.println(isSelected);
-            //System.out.println((String) table.getValueAt(row, 0));
             button.setText("查看学生");
-            //System.out.println(button);
             return button;
         }
         public Object getCellEditorValue() {

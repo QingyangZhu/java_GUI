@@ -81,10 +81,4 @@ public class StudentGradeGUI extends JFrame {
 
         this.setVisible(true);
     }
-
-
-    public static void main(String[] args) {
-        String studentID = "123";
-        new StudentGradeGUI(studentID);
-    }
 }

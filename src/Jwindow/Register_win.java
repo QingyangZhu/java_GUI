@@ -99,11 +99,5 @@ class Register_win extends JFrame {
     }
 
 
-
-
-    public static void main(String[] args) {
-        // 创建注册窗口实例并显示
-        new Register_win().setVisible(true);
-    }
 }
 

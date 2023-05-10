@@ -31,7 +31,7 @@ public class ExamInfoGUI extends JFrame {
 
         try {
             Connection conn = MySQLConnection.getConnection();
-            String sql = "SELECT exam.eid, exam.etime_begin, exam.etime_end, exam.ename FROM xuanke, course, exam WHERE xuanke.cid = course.cid AND course.cid = exam.cid AND xuanke.sid = ?";
+            String sql = "SELECT exam.eid, exam.etime_begin, exam.etime_end, exam.ename FROM xuanke, course, exam WHERE xuanke.cid = course.cid AND course.cid = exam.cid AND sid = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, sid);
             ResultSet rs = stmt.executeQuery();
@@ -75,7 +75,7 @@ public class ExamInfoGUI extends JFrame {
 
     public static void main(String[] args) {
 
-        new ExamInfoGUI("123");
+        new ExamInfoGUI("20214780");
     }
 }
 
